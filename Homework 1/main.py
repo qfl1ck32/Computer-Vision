@@ -101,9 +101,9 @@ def main():
 
     parser = ArgumentParser()
 
-    parser.add_argument("--path", help="The path to the images")
+    parser.add_argument("path", help="The path to the images")
 
-    parser.add_argument("--sudoku-type", help="The type of sudoku", choices=['classic', 'jigsaw'])
+    parser.add_argument("sudoku-type", help="The type of sudoku", choices=['classic', 'jigsaw'])
 
     parser.add_argument("--output", help="Where to save the answers", required=False)
 
