@@ -104,20 +104,13 @@ def _get_bird_eye_view(args: (ndarray, ndarray)):
 
 
 def _extract_digit(cell: ndarray):
-    thresh = threshold(
-        src=cell,
-        thresh=100,
-        maxval=255,
-        type=THRESH_OTSU
-    )[1]
-
-    thresh = clear_border(
-        labels=thresh,
+    cell_without_border = clear_border(
+        labels=cell,
         buffer_size=16
     )
 
     contours = findContours(
-        image=thresh,
+        image=cell_without_border,
         mode=RETR_EXTERNAL,
         method=CHAIN_APPROX_SIMPLE
     )
@@ -129,7 +122,7 @@ def _extract_digit(cell: ndarray):
 
     contour = max(contours, key=contourArea)
 
-    mask = zeros_like(thresh, dtype="uint8")
+    mask = zeros_like(cell_without_border, dtype="uint8")
 
     drawContours(
         image=mask,
@@ -147,8 +140,8 @@ def _extract_digit(cell: ndarray):
         return None
 
     digit = bitwise_and(
-        src1=thresh,
-        src2=thresh,
+        src1=cell_without_border,
+        src2=cell_without_border,
         mask=mask
     )
 
@@ -156,9 +149,7 @@ def _extract_digit(cell: ndarray):
 
     region_of_interest = digit[y: y + h, x: w + x]
 
-    opening = morphologyEx(region_of_interest, MORPH_OPEN, ones((7, 7), dtype="uint8"))
-
-    return opening
+    return region_of_interest
 
 
 def _extract_digits(sudoku: ndarray):
@@ -247,7 +238,7 @@ def process_image_to_bird_eye_view(image: ndarray):
     return apply_pipeline(image, [
         process_image,
         find_contours,
-        _get_bird_eye_view
+        _get_bird_eye_view,
     ])
 
 
