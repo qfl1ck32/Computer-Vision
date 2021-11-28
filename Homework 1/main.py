@@ -110,7 +110,7 @@ def main():
     args, _ = parser.parse_known_args()
 
     path: str = args.path
-    sudoku_type = getattr(args, 'sudoku_type')
+    sudoku_type = getattr(args, 'sudoku-type')
     output: str = args.output
 
     if output and output[-1] == "/":
