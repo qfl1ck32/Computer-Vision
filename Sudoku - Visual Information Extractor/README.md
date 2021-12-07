@@ -11,13 +11,13 @@
 # Dependencies
 
 
-1. [numpy](https://numpy.org/install/)
+1. [numpy@1.19.5](https://numpy.org/install/)
 
-2. [opencv-python](https://pypi.org/project/opencv-python/)
+2. [opencv-python@4.5.3.56](https://pypi.org/project/opencv-python/)
 
-3. [scikit-image](https://pypi.org/project/scikit-image/)
+3. [scikit-image@0.18.3](https://pypi.org/project/scikit-image/)
 
-4. [imutils](https://pypi.org/project/imutils/)
+4. [imutils@0.5.4](https://pypi.org/project/imutils/)
 
 
 # How to run
