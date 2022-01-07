@@ -6,15 +6,13 @@
 
 # Dependencies
 
-1. [numpy@1.19.5]
-
-2. [opencv-python@4.5.3.56]
-
-3. [torch@1.10.1+cu102]
-
-4. [torchvision@0.11.2]
-
-5. [Pillow@8.3.2]
+| **Dependency** | **Version** |
+| -------------- | ----------- |
+| numpy | 1.19.5 | 
+| opencv-python | 4.5.3.56 |
+| torch | 1.10.1+cu102 |
+| torchvision | 0.11.2 |
+| Pillow | 8.3.2 |
 
 # How to run
 
