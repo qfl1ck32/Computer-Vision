@@ -39,11 +39,6 @@ def run_face_detector(model_task1: resnet18, model_task2: resnet18):
                 if window.shape != (window_size[0], window_size[1], image_number_of_channels):
                     continue
 
-                yellow_percentage = get_yellow_percentage(window)
-
-                if 0.7 < yellow_percentage or yellow_percentage < 0.3:
-                    continue
-
                 score, is_detected = test_image(window, model_task1)
 
                 if is_detected:
@@ -76,12 +71,6 @@ def run_face_detector(model_task1: resnet18, model_task2: resnet18):
             name_indexes.append(name_index)
 
             with_box = add_bounding_box(color_image.copy(), box)
-
-            # plt.imshow(cv2.cvtColor(with_box, cv2.COLOR_BGR2RGB))
-            # plt.text(0, -2, character_names[name_index])
-            # plt.show()
-
-            break
 
         logger.info(f"Done. Time: {timeit.default_timer() - start_time}")
 
